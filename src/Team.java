@@ -1,5 +1,5 @@
 public class Team {
-    private static int nextId;
+    private static int nextId = 1;
     private final int id;
     private String name;
 
