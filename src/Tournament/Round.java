@@ -1,3 +1,5 @@
+package Tournament;
+
 import java.util.ArrayList;
 
 public class Round {
@@ -8,7 +10,7 @@ public class Round {
 
     public Round(ArrayList<Team> teams) {
         for (Team team : teams) {
-            if(team == null) throw new NullPointerException("Team is null");
+            if(team == null) throw new NullPointerException("tournament.Team is null");
             this.teams.add(team);
         }
 
@@ -43,11 +45,11 @@ public class Round {
         return message.toString();
     }
 
-//        + Round(ArrayList~Team~ teams)
+//        + tournament.Round(ArrayList~tournament.Team~ teams)
 //        %% creates the matches
-//        + ArrayList~Match~ getMatches()
-//        + ArrayList~Team~ getTeams()
-//        + ArrayList~Team~ getWinners()
-//        + void setWinners(ArrayList~Team~ winners)
+//        + ArrayList~tournament.Match~ getMatches()
+//        + ArrayList~tournament.Team~ getTeams()
+//        + ArrayList~tournament.Team~ getWinners()
+//        + void setWinners(ArrayList~tournament.Team~ winners)
 //        %% the match is found by id
 }

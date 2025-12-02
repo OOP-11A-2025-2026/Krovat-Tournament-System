@@ -1,14 +1,16 @@
+package Tournament;
+
 import java.util.ArrayList;
 
 public class Bracket {
-//    private ArrayList<Team> teams = new ArrayList<>(); // Idk if it is needed, uncomment if it is
+//    private ArrayList<tournament.Team> teams = new ArrayList<>(); // Idk if it is needed, uncomment if it is
     private ArrayList<Round> rounds = new ArrayList<>();
     private Team bracketWinner = null;
     private final boolean isWinnerBracket;
 
     public Bracket(ArrayList<Team> teams, boolean isWinnerBracket) {
-//        for (Team team : teams) {
-//            if(team == null) throw new NullPointerException("Team is null");
+//        for (tournament.Team team : teams) {
+//            if(team == null) throw new NullPointerException("tournament.Team is null");
 //            this.teams.add(team);
 //        }
 
@@ -23,7 +25,7 @@ public class Bracket {
         StringBuilder message = new StringBuilder();
         for(int i = 0; i < rounds.size(); i++) {
             Round round = rounds.get(i);
-            message.append("\tRound #").append(i).append(": \n");
+            message.append("\ttournament.Round #").append(i).append(": \n");
             message.append(round.toString());
         }
 
@@ -31,11 +33,11 @@ public class Bracket {
     }
 
 
-//        + Bracket(ArrayList~Team~ teams)
+//        + tournament.Bracket(ArrayList~tournament.Team~ teams)
 //        %% creates the rounds
-//        + Round getLastRound()
+//        + tournament.Round getLastRound()
 //        %% the match is found by id
 //        %% checks if there is only one team left - the bracket winner
 //        %% if there is - calls getBracketWinner()
-//        + Team getBracketWinner()
+//        + tournament.Team getBracketWinner()
 }

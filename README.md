@@ -1,4 +1,4 @@
-# Krovat-Tournament-System
+# Krovat-Tournament.Tournament-System
 
 (BG)
 Логическо ядро на туртирна система без графичен интерфейс. Турнирния формат е Double Elimination - поток на победителите и губещите.
@@ -13,7 +13,7 @@
 4. Обяснение на кода
 
 5. Екип
-- Иванета - UML диаграма, полета, конструктори и методи toString() на Team, Match, Round, Bracket и Tournament
-- Виктор - UML диаграма
-- Самуил -
-- Игнат -
+- Иванета - UML диаграма, полета, конструктори и методи toString() на Team, Match, Round, Bracket и Tournament от Package Tournament
+- Виктор - UML диаграма, четене от файл и конзолата в Main.
+- Самуил - 
+- Игнат - 
