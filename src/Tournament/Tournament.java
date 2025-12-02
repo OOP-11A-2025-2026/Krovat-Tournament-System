@@ -24,6 +24,23 @@ public class Tournament {
                 "The winner of the tournament is: \n" + final_team.toString();
     }
 
+    public Bracket getWinnersBracket() {
+        return winnersBracket;
+    }
+
+    public Bracket getLosersBracket() {
+        return losersBracket;
+    }
+
+    public Team getFinalTeam() {
+        return final_team;
+    }
+
+    public void setFinalTeam(Team final_team) {
+        if(final_team == null) throw new IllegalArgumentException("final_team is null");
+        this.final_team = final_team;
+    }
+
     // getInfoNextRound(tournament.Bracket bracket)
     // or getInfoNextRound(book winnerBracket) - if true winnersBracket else losersBracket
 }

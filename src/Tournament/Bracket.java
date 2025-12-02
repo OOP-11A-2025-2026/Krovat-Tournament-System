@@ -32,6 +32,24 @@ public class Bracket {
         return message.toString();
     }
 
+    // Returns a copy of rounds, modifying it will NOT modify the original
+    public ArrayList<Round> getRounds() {
+        return new ArrayList<>(rounds);
+    }
+
+    public Team getBracketWinner() {
+        return bracketWinner;
+    }
+
+    public boolean isWinnerBracket() {
+        return isWinnerBracket;
+    }
+
+    public void setBracketWinner(Team bracketWinner) {
+        if(bracketWinner == null) throw new IllegalArgumentException("bracketWinner is null");
+        this.bracketWinner = bracketWinner;
+    }
+
 
 //        + tournament.Bracket(ArrayList~tournament.Team~ teams)
 //        %% creates the rounds

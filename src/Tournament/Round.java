@@ -45,11 +45,22 @@ public class Round {
         return message.toString();
     }
 
+    // Modifying the returned value will modify the original
+    public ArrayList<Match> getMatchesModifiable() {
+        return matches;
+    }
+
+    // Modifying the returned value will modify the original
+    public ArrayList<Team> getWinnersModifiable() {
+        return winners;
+    }
+
+    // Returns a copy of teams, modifying it will NOT modify the original
+    public ArrayList<Team> getTeams() {
+        return new ArrayList<>(teams);
+    }
+
 //        + tournament.Round(ArrayList~tournament.Team~ teams)
 //        %% creates the matches
-//        + ArrayList~tournament.Match~ getMatches()
-//        + ArrayList~tournament.Team~ getTeams()
-//        + ArrayList~tournament.Team~ getWinners()
-//        + void setWinners(ArrayList~tournament.Team~ winners)
 //        %% the match is found by id
 }

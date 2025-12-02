@@ -13,7 +13,7 @@
 4. Обяснение на кода
 
 5. Екип
-- Иванета - UML диаграма, полета, конструктори и методи toString() на Team, Match, Round, Bracket и Tournament от Package Tournament
+- Иванета - UML диаграма, полета, конструктори, методи toString(), getters и setters на Team, Match, Round, Bracket и Tournament от Package Tournament
 - Виктор - UML диаграма, четене от файл и конзолата в Main.
 - Самуил - 
 - Игнат - 
