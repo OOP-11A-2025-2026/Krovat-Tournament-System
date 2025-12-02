@@ -6,7 +6,6 @@ public class Match {
 
     private Team home;
     private Team away;
-//    private boolean didHomeWin; // Might actually be better to replace with tournament.Team matchWinner if the default is false
     private Team matchWinner = null;
 
     public Match(Team home, Team away) {

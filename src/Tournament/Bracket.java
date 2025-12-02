@@ -3,17 +3,11 @@ package Tournament;
 import java.util.ArrayList;
 
 public class Bracket {
-//    private ArrayList<tournament.Team> teams = new ArrayList<>(); // Idk if it is needed, uncomment if it is
     private ArrayList<Round> rounds = new ArrayList<>();
     private Team bracketWinner = null;
     private final boolean isWinnerBracket;
 
     public Bracket(ArrayList<Team> teams, boolean isWinnerBracket) {
-//        for (tournament.Team team : teams) {
-//            if(team == null) throw new NullPointerException("tournament.Team is null");
-//            this.teams.add(team);
-//        }
-
         this.isWinnerBracket = isWinnerBracket;
 
         Round firstRound = new Round(teams);
@@ -63,8 +57,6 @@ public class Bracket {
         rounds.add(new Round(participants));
     }
 
-//        + tournament.Bracket(ArrayList~tournament.Team~ teams)
-//        %% creates the rounds
 //        + tournament.Round getLastRound()
 //        %% the match is found by id
 //        %% checks if there is only one team left - the bracket winner

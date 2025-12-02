@@ -59,8 +59,4 @@ public class Round {
     public ArrayList<Team> getTeams() {
         return new ArrayList<>(teams);
     }
-
-//        + tournament.Round(ArrayList~tournament.Team~ teams)
-//        %% creates the matches
-//        %% the match is found by id
 }

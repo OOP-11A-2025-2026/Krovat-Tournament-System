@@ -12,8 +12,8 @@
 
 4. Обяснение на кода
 
-5. Екип
-- Иванета - UML диаграма, полета, конструктори, методи toString(), getters и setters на Team, Match, Round, Bracket и Tournament от Package Tournament
+5. Екип. Разпределение на работата
+- Иванета - UML диаграма, полета, конструктори, методи toString(), getters и setters на Team, Match, Round, Bracket и Tournament от Package Tournament, overloaded метод createNextRound в Bracket
 - Виктор - UML диаграма, четене от файл и конзолата в Main.
 - Самуил - 
 - Игнат - 
