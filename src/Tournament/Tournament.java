@@ -19,7 +19,7 @@ public class Tournament {
 
     @Override
     public String toString() {
-        return "Winnners bracket: \n" + winnersBracket.toString() + "\n" +
+        return "Winners bracket: \n" + winnersBracket.toString() + "\n" +
                 "Losers bracket: \n" + losersBracket.toString() + "\n" +
                 "The winner of the tournament is: \n" + final_team.toString();
     }
