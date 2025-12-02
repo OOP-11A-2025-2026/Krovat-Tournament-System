@@ -8,6 +8,8 @@ import java.io.PrintWriter;
 
 public class FileLoader {
 
+    public static final String defaultFile = "src/Tournament/data.csv";
+
     public static void saveTeams(String filename, ArrayList<Team> teams) throws FileNotFoundException {
         PrintWriter writer = new PrintWriter(filename);
         for(int i = 0; i < teams.size(); i++) {
@@ -44,9 +46,21 @@ public class FileLoader {
         return teams;
     }
 
+    public static void writeTeams(Scanner sc, ArrayList<Team> teams) {
+        String line = sc.nextLine().trim();
+        if(line.isEmpty()) return;
+        String[] names = line.split(",");
+        for(String name : names) {
+            name = name.trim();
+            if(name.isEmpty()) continue;
+            Team team = new Team(name);
+            teams.add(team);
+        }
+    }
+
     public static void printTeams() {
         try {
-            ArrayList<Team> teams = loadTeams("src/Tournament/data.csv");
+            ArrayList<Team> teams = loadTeams(defaultFile);
 
             for (Team team : teams) {
                 System.out.println(team);
