@@ -50,6 +50,18 @@ public class Bracket {
         this.bracketWinner = bracketWinner;
     }
 
+    // Use this method for winnersBracket
+    public void createNextRound() {
+        ArrayList<Team> participants = rounds.getLast().getWinnersModifiable();
+        rounds.add(new Round(participants));
+    }
+
+    // Use this method for losersBracket, parameter participants is the losers from winnersBracket
+    public void createNextRound(ArrayList<Team> participants) {
+        ArrayList<Team> participants2 = rounds.getLast().getWinnersModifiable();
+        participants.addAll(participants2);
+        rounds.add(new Round(participants));
+    }
 
 //        + tournament.Bracket(ArrayList~tournament.Team~ teams)
 //        %% creates the rounds
