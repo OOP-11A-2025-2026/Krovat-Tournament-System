@@ -1,6 +1,6 @@
 # Krovat-Tournament.Tournament-System
 
-(BG)
+## (BG)
 Логическо ядро на турнирна система без графичен интерфейс. Турнирният формат е Double Elimination - поток на победителите и губещите.
 
 
@@ -22,7 +22,7 @@
 - Самуил - Отделяне на загубилите и създаване на Losers Bracket в Tournament + README файла
 - Игнат - Matches логика + README файла
 
-(EN)
+## (EN)
 Backend of a tournament system. Uses the Double Elimination format - winners stream and losers stream
 
 
