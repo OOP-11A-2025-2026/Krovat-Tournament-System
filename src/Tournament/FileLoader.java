@@ -1,4 +1,5 @@
 package Tournament;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -58,17 +59,15 @@ public class FileLoader {
         }
     }
 
-    public static void printTeams() {
+    public static void printTeams(ArrayList<Team> teams) {
         System.out.println("-----------------------------------------------");
 
         try {
-            ArrayList<Team> teams = loadTeams(defaultFile);
-
             for (Team team : teams) {
                 System.out.println(team);
             }
         }
-        catch(FileNotFoundException e) {
+        catch(NullPointerException e) {
             System.out.println(e.getMessage());
         }
         System.out.println("-----------------------------------------------");

@@ -12,7 +12,7 @@ void main() throws IOException {
         case "read":
         case "r":
             teams = loadTeams(defaultFile);
-            printTeams();
+            printTeams(teams);
         break;
         case "write":
         case "w":
@@ -49,10 +49,9 @@ void main() throws IOException {
         ArrayList<Match> matches = tournament.getWinnersBracket().getRounds().getLast().getMatchesModifiable();
         int matchCount = teams.size() / 2;
 
-        for (int i = 0; i < matchCount; i++) {
-            System.out.println(matches.get(i).toString());
-
             for (Match m : matches) {
+
+                System.out.println(m.toString());
 
                 Team home = m.getHomeTeam();
                 Team away = m.getAwayTeam();
@@ -70,7 +69,6 @@ void main() throws IOException {
                 } else {
                     m.setMatchWinner(away);
                 }
-
             }
 
             System.out.println("\nEntered Matches:");
@@ -78,7 +76,6 @@ void main() throws IOException {
                 System.out.println(m);
             }
         }
-    }
 
     sc.close();
 }
