@@ -3,8 +3,8 @@ package Tournament;
 import java.util.ArrayList;
 
 public class Round {
-    private ArrayList<Team> teams = new ArrayList<>();
-    private ArrayList<Match> matches = new ArrayList<>();
+    private final ArrayList<Team> teams = new ArrayList<>();
+    private final ArrayList<Match> matches = new ArrayList<>();
     private ArrayList<Team>  winners = new ArrayList<>();
     private Team byeGiven = null;
 
@@ -20,8 +20,8 @@ public class Round {
         if(size % 2 == 1)
         {
             this.winners.add(teams.get(size - 1));
-            size--;
             byeGiven = teams.get(size - 1);
+            size--;
         }
 
         for(int i = 0; i < size; i+=2)
@@ -50,9 +50,9 @@ public class Round {
         return matches;
     }
 
-    // Modifying the returned value will modify the original
-    public ArrayList<Team> getWinnersModifiable() {
-        return winners;
+    // Returns a copy of winners, modifying it will NOT modify the original
+    public ArrayList<Team> getWinners() {
+        return new ArrayList<Team>(winners);
     }
 
     // Returns a copy of teams, modifying it will NOT modify the original
@@ -80,11 +80,9 @@ public class Round {
     public void updateWinners() {
         winners.clear();
 
-
         if (byeGiven != null) {
             winners.add(byeGiven);
         }
-
 
         for (Match m : matches) {
             Team w = m.getMatchWinner();

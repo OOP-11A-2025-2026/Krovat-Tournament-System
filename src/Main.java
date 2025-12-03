@@ -3,6 +3,7 @@ import static Tournament.FileLoader.*;
 
 
 void main() throws IOException {
+
     Scanner sc = new Scanner(System.in);
     System.out.print("Select Approach - Read from File (read / r) or Write in Console (write / w): ");
 
@@ -43,39 +44,92 @@ void main() throws IOException {
             System.out.println("Invalid option!");
     }
 
+    if(teams.isEmpty()) {
+        throw new NullPointerException("There are no teams");
+    }
+
     Tournament tournament = new Tournament(teams);
+    boolean winnersRound = false;
 
-    if (!teams.isEmpty()) {
-        ArrayList<Match> matches = tournament.getWinnersBracket().getRounds().getLast().getMatchesModifiable();
-        int matchCount = teams.size() / 2;
+    ArrayList<Round> rounds;
 
-            for (Match m : matches) {
+    while(true) {
+        winnersRound = !winnersRound;
+        if (winnersRound) {
+            if(tournament.getWinnersBracket().getBracketWinner() != null) continue;
+            rounds = tournament.getWinnersBracket().getRounds();
+        } else {
+            if(tournament.getLosersBracket().getBracketWinner() != null) continue;
+            rounds = tournament.getLosersBracket().getRounds();
+        }
 
-                System.out.println(m.toString());
+        Round lastRound = rounds.getLast();
+        ArrayList<Match> matches = lastRound.getMatchesModifiable();
 
-                Team home = m.getHomeTeam();
-                Team away = m.getAwayTeam();
+        for (Match m : matches) {
 
-                System.out.print("Who won? (Enter \"" + home.getName() + "\" or \"" + away.getName() + "\"): ");
-                String winnerName = sc.nextLine();
+            System.out.println(m.toString());
 
-                while (!winnerName.equals(home.getName()) && !winnerName.equals(away.getName())) {
-                    System.out.print("Invalid Team. Enter Winner again: ");
-                    winnerName = sc.nextLine();
-                }
+            Team home = m.getHomeTeam();
+            Team away = m.getAwayTeam();
 
-                if (winnerName.equals(home.getName())) {
-                    m.setMatchWinner(home);
-                } else {
-                    m.setMatchWinner(away);
-                }
+            System.out.print("Who won? (Enter \"" + home.getName() + "\" or \"" + away.getName() + "\"): ");
+            String winnerName = sc.nextLine();
+
+            while (!winnerName.equals(home.getName()) && !winnerName.equals(away.getName())) {
+                System.out.print("Invalid Team. Enter Winner again: ");
+                winnerName = sc.nextLine();
             }
 
-            System.out.println("\nEntered Matches:");
-            for (Match m : matches) {
-                System.out.println(m);
+            if (winnerName.equals(home.getName())) {
+                m.setMatchWinner(home);
+            } else {
+                m.setMatchWinner(away);
             }
         }
+
+        lastRound.updateWinners();
+
+//        System.out.println("Winners last round: ");
+//        for(Team winner : lastRound.getWinners())
+//            System.out.println(winner);
+
+
+        tournament.processNextRounds(winnersRound);
+
+//        System.out.println("---------------");
+//        System.out.println("Winners Bracket Winner - " + tournament.getWinnersBracket().getBracketWinner());
+//        System.out.println("Losers Bracket Winner - " + tournament.getLosersBracket().getBracketWinner());
+//        System.out.println("---------------");
+
+        if(tournament.getWinnersBracket().getBracketWinner() != null && tournament.getLosersBracket().getBracketWinner() != null) {
+            tournament.initializeFinalMatch();
+            break;
+        }
+    }
+
+    System.out.println("We are down to the FINAL TWO CONTESTANTS: " + tournament.getFinalMatch().toString());
+    Team home = tournament.getFinalMatch().getHomeTeam();
+    Team away = tournament.getFinalMatch().getAwayTeam();
+    System.out.print("Who won? (Enter \"" + home.getName() + "\" or \"" + away.getName() + "\"): ");
+    String winnerName = sc.nextLine();
+
+    while (!winnerName.equals(home.getName()) && !winnerName.equals(away.getName())) {
+        System.out.print("Invalid Team. Enter Winner again: ");
+        winnerName = sc.nextLine();
+    }
+
+    if (winnerName.equals(home.getName())) {
+        tournament.getFinalMatch().setMatchWinner(home);
+        tournament.setFinalTeam(home);
+    } else {
+        tournament.getFinalMatch().setMatchWinner(away);
+        tournament.setFinalTeam(away);
+    }
+
+    System.out.println("-------------------------------------------");
+    System.out.println("We have a winner!           " + tournament.getFinalTeam());
+    System.out.println("-------------------------------------------");
 
     sc.close();
 }

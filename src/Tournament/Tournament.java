@@ -6,6 +6,7 @@ public class Tournament {
     private Bracket winnersBracket;
     private Bracket losersBracket = null;
     private Team final_team = null;
+    private Match finalMatch = null;
 
     public Tournament(ArrayList<Team> all_teams) {
         winnersBracket = new Bracket(all_teams, true);
@@ -40,20 +41,32 @@ public class Tournament {
 
 
         // Moves losers from winners bracket to losers bracket
-    public void processNextWinnersRound() {
+    public void processNextRounds(boolean isNextRoundLosers) {
 
         Round lastRound = winnersBracket.getRounds().getLast();
-
         ArrayList<Team> losers = lastRound.getLosers();
 
-        winnersBracket.createNextRound();
+        if(!isNextRoundLosers && winnersBracket.getBracketWinner() != null) losersBracket.updateBracketWinner();
+        else winnersBracket.updateBracketWinner();
 
-        if (losersBracket == null) {
-            losersBracket = new Bracket(losers, false);
-        } else {
-            losersBracket.createNextRound(losers);
+        if(isNextRoundLosers) {
+            if (losersBracket == null) {
+                losersBracket = new Bracket(losers, false);
+            } else {
+                losersBracket.createNextRound(losers);
+            }
+        }
+        else {
+            winnersBracket.createNextRound();
         }
     }
 
-}
+    public void initializeFinalMatch() {
+        finalMatch = new Match(getWinnersBracket().getBracketWinner(), getLosersBracket().getBracketWinner());
 
+    }
+
+    public Match getFinalMatch() {
+        return finalMatch;
+    }
+}

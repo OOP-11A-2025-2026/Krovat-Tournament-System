@@ -28,7 +28,7 @@ public class Bracket {
 
     // Returns a copy of rounds, modifying it will NOT modify the original
     public ArrayList<Round> getRounds() {
-        return new ArrayList<>(rounds);
+        return new ArrayList<Round>(rounds);
     }
 
     public Team getBracketWinner() {
@@ -46,20 +46,23 @@ public class Bracket {
 
     // Use this method for winnersBracket
     public void createNextRound() {
-        ArrayList<Team> participants = rounds.getLast().getWinnersModifiable();
+        ArrayList<Team> participants = rounds.getLast().getWinners();
         rounds.add(new Round(participants));
     }
 
     // Use this method for losersBracket, parameter participants is the losers from winnersBracket
     public void createNextRound(ArrayList<Team> participants) {
-        ArrayList<Team> participants2 = rounds.getLast().getWinnersModifiable();
+        ArrayList<Team> participants2 = rounds.getLast().getWinners();
         participants.addAll(participants2);
         rounds.add(new Round(participants));
     }
 
-//        + tournament.Round getLastRound()
-//        %% the match is found by id
-//        %% checks if there is only one team left - the bracket winner
-//        %% if there is - calls getBracketWinner()
-//        + tournament.Team getBracketWinner()
+    public void updateBracketWinner() {
+        ArrayList<Match> matches = rounds.getLast().getMatchesModifiable();
+        if(matches.size() == 1) {
+            Team winner = matches.getFirst().getMatchWinner();
+            if(winner != null)
+                bracketWinner = winner;
+        }
+    }
 }
