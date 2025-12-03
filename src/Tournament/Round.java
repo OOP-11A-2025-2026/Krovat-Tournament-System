@@ -10,7 +10,7 @@ public class Round {
 
     public Round(ArrayList<Team> teams) {
         for (Team team : teams) {
-            if(team == null) throw new NullPointerException("tournament.Team is null");
+            if(team == null) throw new NullPointerException("Team is null");
             this.teams.add(team);
         }
 

@@ -8,9 +8,12 @@
 
 2. Инструкции
 
+
 3. Алгоритъм
 
+
 4. Обяснение на кода
+
 
 5. Екип. Разпределение на работата
 - Иванета - UML диаграма, полета, конструктори, методи toString(), getters и setters на Team, Match, Round, Bracket и Tournament от Package Tournament, overloaded метод createNextRound в Bracket

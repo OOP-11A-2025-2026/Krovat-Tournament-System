@@ -9,7 +9,7 @@ public class Match {
     private Team matchWinner = null;
 
     public Match(Team home, Team away) {
-        if(home == null || away == null) throw new IllegalArgumentException("tournament.Team object cannot be null");
+        if(home == null || away == null) throw new IllegalArgumentException("Team object cannot be null");
         this.home = home;
         this.away = away;
 
@@ -18,7 +18,7 @@ public class Match {
     }
 
     public Match(Team home, Team away, Team matchWinner) {
-        if(home == null || away == null) throw new IllegalArgumentException("tournament.Team object cannot be null");
+        if(home == null || away == null) throw new IllegalArgumentException("Team object cannot be null");
         this.home = home;
         this.away = away;
         this.matchWinner = matchWinner;

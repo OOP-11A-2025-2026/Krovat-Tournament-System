@@ -19,7 +19,7 @@ public class Bracket {
         StringBuilder message = new StringBuilder();
         for(int i = 0; i < rounds.size(); i++) {
             Round round = rounds.get(i);
-            message.append("\ttournament.Round #").append(i).append(": \n");
+            message.append("\tRound #").append(i).append(": \n");
             message.append(round.toString());
         }
 
