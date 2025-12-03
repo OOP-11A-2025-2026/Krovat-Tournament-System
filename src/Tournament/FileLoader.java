@@ -59,6 +59,8 @@ public class FileLoader {
     }
 
     public static void printTeams() {
+        System.out.println("-----------------------------------------------");
+
         try {
             ArrayList<Team> teams = loadTeams(defaultFile);
 
@@ -69,6 +71,7 @@ public class FileLoader {
         catch(FileNotFoundException e) {
             System.out.println(e.getMessage());
         }
+        System.out.println("-----------------------------------------------");
     }
 }
 

@@ -29,7 +29,7 @@ public class Match {
 
     @Override
     public String toString() {
-        StringBuilder message = new StringBuilder("tournament.Match #" + id + "\n" + home.toString() + " VS " + away.toString());
+        StringBuilder message = new StringBuilder("Match " + id + ":\n" + home.toString() + " VS " + away.toString() + "\n");
         if(matchWinner != null)
         {
             message.append("The winner is ").append(matchWinner.toString()).append("\n");

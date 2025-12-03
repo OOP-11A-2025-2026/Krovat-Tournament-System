@@ -6,15 +6,16 @@ void main() throws IOException {
     Scanner sc = new Scanner(System.in);
     System.out.print("Select Approach - Read from File (read / r) or Write in Console (write / w): ");
 
+    ArrayList<Team> teams = new ArrayList<>();
     String choice = sc.nextLine();
     switch(choice) {
         case "read":
         case "r":
+            teams = loadTeams(defaultFile);
             printTeams();
         break;
         case "write":
         case "w":
-            ArrayList<Team> teams = new ArrayList<>();
 
             System.out.println("Enter the names of the teams, separate them by commas (,):");
             writeTeams(sc, teams);
@@ -43,6 +44,86 @@ void main() throws IOException {
     }
 
     //continues with implementation
+    if (!teams.isEmpty()) {
+        ArrayList<Match> matches = new ArrayList<>();
+        int matchCount;
+
+        while(true) {
+            System.out.print("Enter number of matches: ");
+            String input = sc.nextLine();
+
+            try {
+                matchCount = Integer.parseInt(input);
+                if(matchCount <= 0) {
+                    System.out.println("Enter a positive number!");
+                    continue;
+                }
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println("Error! - " + e.getMessage());
+            }
+        }
+
+        for (int i = 0; i < matchCount; i++) {
+            System.out.println("\nMatch " + (i + 1) + ":");
+
+            String homeName, awayName;
+
+            System.out.print("Enter home team: ");
+            homeName = sc.nextLine();
+
+            System.out.print("Enter away team: ");
+            awayName = sc.nextLine();
+
+            while(homeName.equals(awayName)) {
+                System.out.println("Home Team and Away Team cannot be the same team!");
+                i--;
+                if(i < 0) i = 0;
+                System.out.print("Enter home team: ");
+                homeName = sc.nextLine();
+                System.out.print("Enter away team: ");
+                awayName = sc.nextLine();
+            }
+
+            Team homeTeam = null;
+            Team awayTeam = null;
+
+            for (Team t : teams) {
+                if (t.getName().equalsIgnoreCase(homeName)) homeTeam = t;
+                if (t.getName().equalsIgnoreCase(awayName)) awayTeam = t;
+            }
+
+            if (homeTeam == null || awayTeam == null) {
+                System.out.println("Error: One / Both Teams Not Found. Try Again!");
+                i--;
+                if(i < 0) i = 0;
+                continue;
+            }
+
+            Match match = new Match(homeTeam, awayTeam);
+
+            System.out.print("Who won? (enter \"" + homeName + "\" or \"" + awayName + "\"): ");
+            String winnerName = sc.nextLine();
+
+            while (!winnerName.equalsIgnoreCase(homeName) && !winnerName.equalsIgnoreCase(awayName)) {
+                System.out.print("Invalid Team. Enter Winner again: ");
+                winnerName = sc.nextLine();
+            }
+
+            if (winnerName.equalsIgnoreCase(homeName)) {
+                match.setMatchWinner(homeTeam);
+            } else {
+                match.setMatchWinner(awayTeam);
+            }
+
+            matches.add(match);
+        }
+
+        System.out.println("\nEntered Matches:");
+        for (Match m : matches) {
+            System.out.println(m);
+        }
+    }
 
     sc.close();
 }
