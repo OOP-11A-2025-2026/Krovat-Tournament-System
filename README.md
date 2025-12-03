@@ -18,7 +18,7 @@
 
 5. Екип. Разпределение на работата
 - Иванета - UML диаграма, полета, конструктори, методи toString(), getters и setters на Team, Match, Round, Bracket и Tournament от Package Tournament, overloaded метод createNextRound в Bracket, Double Elimination логика
-- Виктор - UML диаграма, четене от файл и конзолата, Main + Debugging, Double Elimination логика (Support), направи английския вариант на README файла
+- Виктор - UML диаграма, четене от файл и конзолата, Main + Debugging, Double Elimination логика (Support), направи английския вариант на README файла, направи историята на целия турнир
 - Самуил - Отделяне на загубилите и създаване на Losers Bracket в Tournament + README файла
 - Игнат - Matches логика + README файла
 
@@ -40,6 +40,6 @@ Backend of a tournament system. Uses the Double Elimination format - winners str
 
 5. The team and what we worked on
 - Ivaneta - UML diagram, fields, constructors, everything connected to the Team, Match, Round, Bracket and Tournament classes, the overloaded method createNextRound (in Bracket), the "heavy lifting" on the Double Elimination logic
-- Viktor - UML diagram, reading and writing from and into a file and the console, Main + Debugging, the support on the Double Elimination logic, made the English translation of the README
+- Viktor - UML diagram, reading and writing from and into a file and the console, Main + Debugging, the support on the Double Elimination logic, made the English translation of the README, made the tournament history
 - Samuil - Separation of the losers from the winners and creating the Losers Bracket in the Tournament Class + worked on the README
 - Ignat - The Match logic in Main + worked on the README
