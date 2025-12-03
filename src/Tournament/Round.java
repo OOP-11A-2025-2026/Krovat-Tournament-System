@@ -77,6 +77,23 @@ public class Round {
         return losers;
     }
 
+    public void updateWinners() {
+        winners.clear();
+
+
+        if (byeGiven != null) {
+            winners.add(byeGiven);
+        }
+
+
+        for (Match m : matches) {
+            Team w = m.getMatchWinner();
+            if (w != null) {
+                winners.add(w);
+            }
+        }
+    }
+
 }
 
 
