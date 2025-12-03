@@ -59,4 +59,24 @@ public class Round {
     public ArrayList<Team> getTeams() {
         return new ArrayList<>(teams);
     }
+
+        //Returns all losing teams from this round
+    public ArrayList<Team> getLosers() {
+        ArrayList<Team> losers = new ArrayList<>();
+
+        for (Match m : matches) {
+            if (m.getMatchWinner() == null) continue;
+
+            if (m.getMatchWinner() == m.getHomeTeam()) {
+                losers.add(m.getAwayTeam());
+            } else {
+                losers.add(m.getHomeTeam());
+            }
+        }
+
+        return losers;
+    }
+
 }
+
+

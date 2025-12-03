@@ -15,5 +15,5 @@
 5. Екип. Разпределение на работата
 - Иванета - UML диаграма, полета, конструктори, методи toString(), getters и setters на Team, Match, Round, Bracket и Tournament от Package Tournament, overloaded метод createNextRound в Bracket
 - Виктор - UML диаграма, четене от файл и конзолата в Main.
-- Самуил - 
+- Самуил - логика за отделяне на загубилите и създаване на Losers Bracket в Tournament
 - Игнат - 

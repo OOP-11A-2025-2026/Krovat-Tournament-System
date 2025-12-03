@@ -37,4 +37,23 @@ public class Tournament {
 
     // getInfoNextRound(tournament.Bracket bracket)
     // or getInfoNextRound(book winnerBracket) - if true winnersBracket else losersBracket
+
+
+        // Moves losers from winners bracket to losers bracket
+    public void processNextWinnersRound() {
+
+        Round lastRound = winnersBracket.getRounds().getLast();
+
+        ArrayList<Team> losers = lastRound.getLosers();
+
+        winnersBracket.createNextRound();
+
+        if (losersBracket == null) {
+            losersBracket = new Bracket(losers, false);
+        } else {
+            losersBracket.createNextRound(losers);
+        }
+    }
+
 }
+
