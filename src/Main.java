@@ -50,7 +50,7 @@ void main() throws IOException {
 
         while(true) {
             System.out.print("Enter number of matches: ");
-            String input = sc.nextLine();
+            String input = sc.nextLine().trim();
 
             try {
                 matchCount = Integer.parseInt(input);
@@ -70,39 +70,29 @@ void main() throws IOException {
             String homeName, awayName;
 
             System.out.print("Enter home team: ");
-            homeName = sc.nextLine();
+            homeName = sc.nextLine().trim();
 
             System.out.print("Enter away team: ");
-            awayName = sc.nextLine();
-
-            while(homeName.equals(awayName)) {
-                System.out.println("Home Team and Away Team cannot be the same team!");
-                i--;
-                if(i < 0) i = 0;
-                System.out.print("Enter home team: ");
-                homeName = sc.nextLine();
-                System.out.print("Enter away team: ");
-                awayName = sc.nextLine();
-            }
+            awayName = sc.nextLine().trim();
 
             Team homeTeam = null;
             Team awayTeam = null;
 
             for (Team t : teams) {
-                if (t.getName().equalsIgnoreCase(homeName)) homeTeam = t;
-                if (t.getName().equalsIgnoreCase(awayName)) awayTeam = t;
+                if (t.getName().equals(homeName)) homeTeam = t;
+                if (t.getName().equals(awayName)) awayTeam = t;
             }
 
             if (homeTeam == null || awayTeam == null) {
                 System.out.println("Error: One / Both Teams Not Found. Try Again!");
                 i--;
                 if(i < 0) i = 0;
-                continue;
+                return;
             }
 
             Match match = new Match(homeTeam, awayTeam);
 
-            System.out.print("Who won? (enter \"" + homeName + "\" or \"" + awayName + "\"): ");
+            System.out.print("Who won? (Enter \"" + homeName + "\" or \"" + awayName + "\"): ");
             String winnerName = sc.nextLine();
 
             while (!winnerName.equalsIgnoreCase(homeName) && !winnerName.equalsIgnoreCase(awayName)) {
