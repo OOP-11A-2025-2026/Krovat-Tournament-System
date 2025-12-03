@@ -127,9 +127,12 @@ void main() throws IOException {
         tournament.setFinalTeam(away);
     }
 
-    System.out.println("-------------------------------------------");
-    System.out.println("We have a winner!           " + tournament.getFinalTeam());
-    System.out.println("-------------------------------------------");
+    System.out.println("=============================================");
+    System.out.println("We have a winner!               " + tournament.getFinalTeam());
+    System.out.println("=============================================");
+    System.out.println();
+
+    tournament.printMatchHistory();
 
     sc.close();
 }

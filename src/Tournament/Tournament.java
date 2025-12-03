@@ -69,4 +69,40 @@ public class Tournament {
     public Match getFinalMatch() {
         return finalMatch;
     }
+
+    private void printBracketHistory(Bracket bracket) {
+        ArrayList<Round> rounds = bracket.getRounds();
+        for(int i = 0; i < rounds.size(); i++) {
+            Round round = rounds.get(i);
+            System.out.print("Round " + (i + 1) + ": ");
+            System.out.println();
+
+            for(Match m : round.getMatchesModifiable()) {
+                printMatchRecord(m);
+            }
+        }
+    }
+
+    private void printMatchRecord(Match match) {
+        Team home = match.getHomeTeam();
+        Team away = match.getAwayTeam();
+        Team winner = match.getMatchWinner();
+
+        System.out.println("Match " + match.getId() + ": " + home.getName() +  " VS " + away.getName() + (winner != null ? " → Winner: " + winner.getName() : " (unfinished)"));
+    }
+
+    public void printMatchHistory() {
+        System.out.println("=============FULL MATCH HISTORY==============");
+        System.out.println("WINNERS BRACKET");
+        System.out.println("=============================================");
+        printBracketHistory(winnersBracket);
+        System.out.println("=============================================");
+        System.out.println();
+        System.out.println("=============================================");
+        System.out.println("LOSERS BRACKET");
+        printBracketHistory(losersBracket);
+        System.out.println("=============================================");
+        System.out.println("OVERALL WINNER: " + getFinalTeam().toString());
+        System.out.println("=============================================");
+    }
 }
