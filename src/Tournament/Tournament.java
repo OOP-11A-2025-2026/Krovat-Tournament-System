@@ -46,7 +46,7 @@ public class Tournament {
         Round lastRound = winnersBracket.getRounds().getLast();
         ArrayList<Team> losers = lastRound.getLosers();
 
-        if(!isNextRoundLosers && winnersBracket.getBracketWinner() != null) losersBracket.updateBracketWinner();
+        if(winnersBracket.getBracketWinner() != null) losersBracket.updateBracketWinner();
         else winnersBracket.updateBracketWinner();
 
         if(isNextRoundLosers) {

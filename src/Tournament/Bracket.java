@@ -59,7 +59,7 @@ public class Bracket {
 
     public void updateBracketWinner() {
         ArrayList<Match> matches = rounds.getLast().getMatchesModifiable();
-        if(matches.size() == 1) {
+        if(matches.size() == 1 && rounds.getLast().getByeGiven() == null) {
             Team winner = matches.getFirst().getMatchWinner();
             if(winner != null)
                 bracketWinner = winner;

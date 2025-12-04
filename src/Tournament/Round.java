@@ -92,6 +92,9 @@ public class Round {
         }
     }
 
+    public Team getByeGiven() {
+        return byeGiven;
+    }
 }
 
 

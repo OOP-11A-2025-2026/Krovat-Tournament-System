@@ -56,10 +56,8 @@ void main() throws IOException {
     while(true) {
         winnersRound = !winnersRound;
         if (winnersRound) {
-            if(tournament.getWinnersBracket().getBracketWinner() != null) continue;
             rounds = tournament.getWinnersBracket().getRounds();
         } else {
-            if(tournament.getLosersBracket().getBracketWinner() != null) continue;
             rounds = tournament.getLosersBracket().getRounds();
         }
 
